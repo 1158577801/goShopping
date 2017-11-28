@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shopping.web.mapper.UserMapper">
+	<select id="getUserInfoById" parameterType="java.lang.String"
+		resultType="com.shopping.web.vo.UserVo">
+		select * from user where
+		accountNumber=#{accountNumber} and
+		delFlag=0
+	</select>
+
+</mapper>
