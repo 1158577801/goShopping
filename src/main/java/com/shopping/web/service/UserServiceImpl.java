@@ -36,7 +36,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserVo getUserInfoByAPService(String accountNumber, String passWord) {
 		RowMapper<UserVo> rm = BeanPropertyRowMapper.newInstance(UserVo.class);
-		return jdbcTemplate.query("select uid,nickName,passWord,accountNumber from user where delFlag=0 and accountNumber=? and passWord=?",rm,accountNumber,passWord).get(0);
+		List<UserVo> list=jdbcTemplate.query("select uid,nickName,passWord,accountNumber from user where delFlag=0 and accountNumber=? and passWord=?",rm,accountNumber,passWord);
+		if(null!=list && list.size()>0) {
+			return list.get(0);
+		}
+		return null;
 	}
 	
 }
