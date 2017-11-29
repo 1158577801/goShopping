@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Language" contect="zh-CN">
+<meta http-equiv="windows-Target" contect="_top"><!--强制页面在当前窗口中以独立页面显示，可以防止自己的网页被别人当作一个frame页调用-->
 <title>爱购物,就上牛掰人生商城</title>
 
-	<%-- <link rel="shortcut icon" href="${ctx}/images/index/favicon.ico" type="image/x-icon" />
-	 --%><link rel="stylesheet" href="<%=request.getContextPath()%>/css/login/style.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/login/style.css">
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/common/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/login/login.js"></script>
 	<script language="JavaScript"> 

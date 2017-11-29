@@ -9,7 +9,7 @@ public class ShoppingConfigurerAdapter extends WebMvcConfigurerAdapter {
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		// TODO Auto-generated method stub
-		registry.addInterceptor(new LoginInterceptor()).excludePathPatterns("/");//不拦截登录action /界面
+		registry.addInterceptor(new LoginInterceptor()).excludePathPatterns("/").excludePathPatterns("/getLogin");//不拦截登录action /界面
 		super.addInterceptors(registry);
 	}
 
