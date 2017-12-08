@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="../jsp/common/base.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,9 +8,7 @@
 <meta http-equiv="Content-Language" contect="zh-CN">
 <meta http-equiv="windows-Target" contect="_top"><!--强制页面在当前窗口中以独立页面显示，可以防止自己的网页被别人当作一个frame页调用-->
 <title>爱购物,就上牛掰人生商城</title>
-
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/login/style.css">
-	<script type="text/javascript" src="<%=request.getContextPath()%>/js/common/jquery-1.7.2.min.js"></script>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/login/login.css">
 	<script type="text/javascript" src="<%=request.getContextPath()%>/js/login/login.js"></script>
 	<script language="JavaScript"> 
 		if (window != top) 
@@ -27,7 +26,8 @@
 			</label>
 			
 			<input type="hidden" value="${errorMessage}" id="errorMessageId"/>
-			<button  name="" value="登 录" style="width:180px; height:30px;" onclick="return checked()">登 录</button>
+			<button  name="" value="登 录" style="width:90px; height:30px;" onclick="return checked()">登 录</button>
+			<button  name="" value="注 册" style="width:90px; height:30px;" onclick="JavaScript:registerPage()">注 册</button>
 		</form>
 	</div>
 <div class="diagWrap">

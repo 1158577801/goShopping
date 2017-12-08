@@ -2,7 +2,7 @@
 //验证码
 function createCode() {
 	  code = "";
-	  var codeLength = 4;//验证码的长度  
+	  var codeLength = 3;//验证码的长度  
 	  var checkCode = document.getElementById("checkCode");
 	  var selectChar = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9,'A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y');//所有候选组成验证码的字符，当然也可以用中文的  
 	
@@ -62,4 +62,9 @@ function checked(){
 function back(){
 	$(".diagWrap").hide();
 	$(".diagWrap2").hide();
+}
+
+function registerPage(){
+	window.location.href=ctx+"/register";
+	window.event.returnValue=false;  
 }

@@ -5,6 +5,7 @@ public class UserVo {
 	public String accountNumber;//账号
 	public String passWord;//密码
 	public String nickName;//昵称
+	public String email;//邮箱
 	public int delFlag;//0未删除 1删除
 	public String getUid() {
 		return uid;
@@ -35,6 +36,12 @@ public class UserVo {
 	}
 	public void setDelFlag(int delFlag) {
 		this.delFlag = delFlag;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }
