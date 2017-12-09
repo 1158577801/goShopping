@@ -6,6 +6,7 @@ public class UserVo {
 	public String passWord;//密码
 	public String nickName;//昵称
 	public String email;//邮箱
+	public String activation;//激活
 	public int delFlag;//0未删除 1删除
 	public String getUid() {
 		return uid;
@@ -18,6 +19,13 @@ public class UserVo {
 	}
 	public void setAccountNumber(String accountNumber) {
 		this.accountNumber = accountNumber;
+	}
+	
+	public String getActivation() {
+		return activation;
+	}
+	public void setActivation(String activation) {
+		this.activation = activation;
 	}
 	public String getPassWord() {
 		return passWord;

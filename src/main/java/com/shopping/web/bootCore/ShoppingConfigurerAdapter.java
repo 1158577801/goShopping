@@ -13,7 +13,8 @@ public class ShoppingConfigurerAdapter extends WebMvcConfigurerAdapter {
 		.excludePathPatterns("/")
 		.excludePathPatterns("/getLogin")
 		.excludePathPatterns("/register")
-		.excludePathPatterns("/toRegister");//不拦截登录action /界面
+		.excludePathPatterns("/toRegister")
+		.excludePathPatterns("/checkActivation");//不拦截登录action /界面
 		super.addInterceptors(registry);
 	}
 

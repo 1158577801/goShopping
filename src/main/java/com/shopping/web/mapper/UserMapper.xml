@@ -7,5 +7,17 @@
 		accountNumber=#{accountNumber} and
 		delFlag=0
 	</select>
+	<insert id="saveUser" parameterType="com.shopping.web.vo.UserVo">
+		insert into
+		user(uid,accountNumber,passWord,nickName,email
+		)
+		value(#{uid},#{accountNumber},#{passWord},#{nickName},#{email})
 
+	</insert>
+	<update id="updateUser" parameterType="com.shopping.web.vo.UserVo">
+		update user set
+		activation='yes' where
+		accountNumber
+		=#{accountNumber} and delFlag=0
+	</update>
 </mapper>

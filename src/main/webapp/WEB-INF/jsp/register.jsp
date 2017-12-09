@@ -14,18 +14,36 @@
 <script language="JavaScript">
 	function checkRegister() {
 		var accountNumber = $("#accountNumber").val();
-		var password = $("#password").val();
+		var passWord = $("#passWord").val();
 		var nickName = $("#nickName").val();
 		var email = $("#email").val();
-		if (isNotNull(accountNumber) && isNotNull(password)
+		if (isNotNull(accountNumber) && isNotNull(passWord)
 				&& isNotNull(nickName) && isNotNull(email)) {
 			if(!isEmail(email)){
 				alert("邮箱格式不和法！");
-				return ;
+				return false;
 			}
-			document.forms[0].submit();
+			//document.forms[0].submit();
+			 $.ajax({
+	             type: "POST",
+	             url: ctx+"/toRegister",
+	             data: {accountNumber:accountNumber, passWord:passWord,nickName:nickName,email:email},
+	             dataType: "json",
+	             success: function(data){
+	                       if(null!=data){
+	                    	   alert(data.message);
+	                    	   if(data.status=="success"){
+	                    		   $("#accountNumber").val("");
+	                    		   $("#passWord").val("");
+	                    		   $("#nickName").val("");
+	                    		   $("#email").val("");
+	                    	   }
+	                       }
+	             }
+	         });
 		} else {
 			alert("请填写完整的信息！");
+			return false;
 		}
 
 	}
@@ -33,11 +51,11 @@
 </head>
 <body>
 	<div class="form">
-		<form action="<%=request.getContextPath()%>/toRegister" method="post">
+		
 			<label class="psw">用户名：<input type="text"
 				name="accountNumber" id="accountNumber" maxlength="10"></label>
 			<label class="psw">密&nbsp;&nbsp;&nbsp;码：<input type="text"
-				name="passWord" id="password" maxlength="15"></label> 
+				name="passWord" id="passWord" maxlength="15"></label> 
 			<label
 				class="psw">昵&nbsp;&nbsp;&nbsp;称：<input type="text"
 				name="nickName" id="nickName" maxlength="8"></label> 
@@ -45,7 +63,7 @@
 				class="psw">邮&nbsp;&nbsp;&nbsp;箱：<input type="text"
 				name="email" id="email" maxlength="30"></label>
 			<button onclick="return checkRegister()">注 册</button>
-		</form>
+		
 	</div>
 </body>
 </html>

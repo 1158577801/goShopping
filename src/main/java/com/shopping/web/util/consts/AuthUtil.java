@@ -1,0 +1,59 @@
+package com.shopping.web.util.consts;
+
+
+public class AuthUtil {
+	// 时间戳时间设置不能超过某个时间，防止传输过程中signature窃取后的连续攻击，这个值也不能设置太小，因为可能存在网络缓慢或者不稳定
+	private static int time_out = 60*1000*5;//5分钟
+
+	/**
+	 * 时间戳
+	 * 
+	 * @return
+	 */
+	public static String generateTimestamp() {
+		return System.currentTimeMillis() + "";
+	}
+
+	/**
+	 * 利用token，时间戳生成加密签名
+	 * @param app_token
+	 * @param timestamp
+	 * @param nonce
+	 * @return
+	 */
+	public static String generateSignature(String app_token, String timestamp,String nonce) {
+		return Md5Util.hmacSign(app_token,timestamp+nonce);
+	}
+
+	/**
+	 * 验证请求的签名
+	 * @param signature
+	 * @param timestamp
+	 * @param nonce
+	 * @param appToken
+	 * @return
+	 */
+	public static boolean validateSignature(String signature, String timestamp,String nonce,String appToken) {
+		long ctime = System.currentTimeMillis();
+		long ttime = Long.valueOf(timestamp);
+		if ((ctime - ttime) < time_out && signature.equals(generateSignature(appToken,timestamp,nonce))) {
+			return true;
+		}
+		return false;
+
+	}
+	/**
+	 * 验证请求的失效时间
+	 * @param timestamp
+	 * @return
+	 */
+	public static boolean validateTimestamp( String timestamp) {
+		long ctime = System.currentTimeMillis();
+		long ttime = Long.valueOf(timestamp);
+		if ((ctime - ttime) < time_out ) {
+			return true;
+		}
+		return false;
+
+	}
+}

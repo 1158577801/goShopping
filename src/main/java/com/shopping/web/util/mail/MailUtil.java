@@ -35,6 +35,7 @@ public class MailUtil {
 	 */
 	public static boolean sendEmail(MimeMessageVo mimeDTO) {
 		try {
+			Long startTime=System.currentTimeMillis();
 			Properties props = new Properties();
 			props.put("mail.smtp.host", SMTPUtil.getSMTPAddress(mimeDTO.getUserName()));// SMTPUtil.SimpleMailSender(userName)
 			props.setProperty("mail.smtp.auth", "true");
@@ -57,12 +58,12 @@ public class MailUtil {
 			msg.setRecipients(Message.RecipientType.TO, mimeDTO.getTargetAddress());
 			// 把DTO设置的内容，复制到msg中
 			BeanUtils.copyProperties(msg, mimeDTO);
-			msg.setContent(mimeDTO.getText(), "text/html;charst=utf-8");
+			msg.setContent(mimeDTO.getText(), "text/html;charset=utf-8");
 			// 发送邮件
 			Transport.send(msg);
-
+			Long endTime=System.currentTimeMillis();
 			System.out.println("================【" + mimeDTO.getUserName() + "】发送邮件【" + mimeDTO.getTargetAddress()
-					+ "】成功====================");
+					+ "】成功====================用时："+(endTime-startTime));
 			return true;
 		} catch (Exception mex) {
 			mex.printStackTrace();
