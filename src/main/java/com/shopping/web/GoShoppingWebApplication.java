@@ -3,6 +3,8 @@ package com.shopping.web;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.shopping.web.bootCore.ApplicationMelodyListener;
+
 @SpringBootApplication
 public class GoShoppingWebApplication {
 	/*
@@ -12,6 +14,9 @@ public class GoShoppingWebApplication {
 	 * http://briancheng.51vip.biz/goShoppingWeb/
 	 */
 	public static void main(String[] args) {
-		SpringApplication.run(GoShoppingWebApplication.class, args);
+		SpringApplication app = new SpringApplication(GoShoppingWebApplication.class); 
+        app.addListeners(new ApplicationMelodyListener());//增加javamelody性能监控工具  http://localhost:8080/goShoppingWeb/monitoring
+        app.run(args);
+		//SpringApplication.run(GoShoppingWebApplication.class, args);
 	}
 }

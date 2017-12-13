@@ -1,7 +1,5 @@
 package com.shopping.web.controller;
 
-import java.util.UUID;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,9 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.shopping.web.bootCore.LoginInterceptor;
+import com.shopping.web.bootCore.ShoppingConfigurerAdapter;
 import com.shopping.web.common.Result;
-import com.shopping.web.mapper.UserMapper;
 import com.shopping.web.service.UserService;
 import com.shopping.web.util.consts.AuthUtil;
 import com.shopping.web.util.consts.Base64Util;
@@ -75,7 +72,7 @@ public class UserController {
 				httpServletRequest.setAttribute("errorMessage", "用户未激活");
 				return "login";
 			}
-			httpServletRequest.getSession().setAttribute(LoginInterceptor.SESSION_KEY, userVo);
+			httpServletRequest.getSession().setAttribute(ShoppingConfigurerAdapter.SESSION_KEY, userVo);
 			return "main";
 		} else {
 			httpServletRequest.setAttribute("errorMessage", "用户名或者密码错误");
