@@ -23,7 +23,6 @@ import com.shopping.web.util.mail.MimeMessageVo;
 import com.shopping.web.vo.UserVo;
 
 @Controller
-// @RequestMapping("/goShoppingWeb") Rest
 public class UserController {
 	@Value("${email.user}")
 	private String emailUser;

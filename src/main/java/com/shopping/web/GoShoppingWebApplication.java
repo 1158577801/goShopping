@@ -17,6 +17,5 @@ public class GoShoppingWebApplication {
 		SpringApplication app = new SpringApplication(GoShoppingWebApplication.class); 
         app.addListeners(new ApplicationMelodyListener());//增加javamelody性能监控工具  http://localhost:8080/goShoppingWeb/monitoring
         app.run(args);
-		//SpringApplication.run(GoShoppingWebApplication.class, args);
 	}
 }
