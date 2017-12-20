@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -29,6 +31,8 @@ public class UserController {
 	@Value("${email.pwd}")
 	private String emailPwd;
 	private final static String title="系统注册用户通知";
+	
+	private static final Logger LOG = LoggerFactory.getLogger(UserController.class);  
 	
 	@Autowired
 	private UserService userService;
@@ -62,6 +66,7 @@ public class UserController {
 			HttpServletResponse httpServletResponse) {
 		String accountNumber = httpServletRequest.getParameter("accountNumber");
 		String passWord = httpServletRequest.getParameter("passWord");
+		LOG.info("getLogin："+accountNumber+"===========passWord:"+passWord);
 		if (StringUtils.isBlank(accountNumber) || StringUtils.isBlank(passWord)) {
 			return "login";
 		}
